@@ -46,6 +46,10 @@ public class PostService {
         return mapToDto(postRepository.save(convertToModel(postDto)));
     }
 
+    public void deleteById(Integer id) {
+        postRepository.deleteById(id);
+    }
+
 
     private void validateDTO(PostDto postDto) {
         if (postDto.id() == null || postDto.userId() == null) {

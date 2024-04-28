@@ -15,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -163,7 +164,6 @@ public class PostControllerTest {
     }
 
 
-
     @Test
     public void shouldNotUpdatePostWhenGivenInValidPost() throws Exception {
         var updatedPost = new PostDto(12345, 11, "UPDATED TITLE", "UPDATED  BODY", null);
@@ -185,5 +185,11 @@ public class PostControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+
+    @Test
+    public void deletePostGivenValidId() throws Exception {
+        dotNothin
+        mockMvc.perform(delete(new URI("/api/posts/1"))).andExpect(status().isNoContent());
+    }
 
 }
