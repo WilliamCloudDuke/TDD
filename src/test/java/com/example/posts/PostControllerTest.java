@@ -188,8 +188,12 @@ public class PostControllerTest {
 
     @Test
     public void deletePostGivenValidId() throws Exception {
-        dotNothin
+        //mock out objects as delete method does not return a value (void)
+        doNothing().when(postService).deleteById(1);
         mockMvc.perform(delete(new URI("/api/posts/1"))).andExpect(status().isNoContent());
+        //verify that service was called - code coverage
+        verify(postService,times(1)).deleteById(1);
+
     }
 
 }
